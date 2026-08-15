@@ -84,8 +84,9 @@ Dockerfile) → under $1/month. Image is ~315 MB (build/deploy time only).
 - The Railway GitHub App is installed on the CostaFot account (done 2026-08-15
   after the first push didn't auto-deploy — service creation can pull the repo
   via OAuth, but push webhooks need the app installation). Auto-deploy on push
-  to main is verified working (~1 min from push to live). No GitHub Actions are
-  involved — Railway builds on its own infra, so the Actions tab stays empty.
+  to main is verified working (~1 min from push to live). Railway builds on its
+  own infra — GitHub Actions runs CI (`.github/workflows/ci.yml`: gradle build +
+  tests) but does not gate or trigger deploys; a red CI run won't stop Railway.
 - A public domain is not created automatically: trigger it (`railway domain` /
   MCP generate-domain) after the service exists; Railway picks the
   `*.up.railway.app` subdomain (editable later in service settings).

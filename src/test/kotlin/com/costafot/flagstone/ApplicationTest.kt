@@ -91,6 +91,12 @@ class ApplicationTest {
     }
 
     @Test
+    fun `the real flags directory in this repo is valid`() {
+        val flagsByApp = loadFlagsDir(File("flags"))
+        assert(flagsByApp.isNotEmpty())
+    }
+
+    @Test
     fun `loadFlags rejects non-primitive values`() {
         val file = File.createTempFile("flags", ".json").apply {
             deleteOnExit()
