@@ -4,9 +4,14 @@ Caveman feature management: a tiny API that serves a mostly-static JSON of featu
 flags to my own apps. Deliberately minimal — git is the admin UI, a push is a flag
 change. Repo: https://github.com/CostaFot/flagstone.
 
-Status (2026-08-15): app is built and verified locally (tests, bare JVM run, and
-Docker container all pass). NOT yet committed, pushed, or deployed — user wants
-to be checked with before any deploy.
+Status (2026-08-15): LIVE at https://flagstone-production.up.railway.app
+(Railway project `flagstone`, service `flagstone`, production environment;
+project id dcbbe5bf-0664-469e-85fe-51ae5e887180). First deploy observed SUCCESS
+and verified with live authed requests. `FLAGSTONE_API_KEY` lives ONLY in the
+Railway service variables — never commit it to this repo. Healthcheck path
+/health, restart policy ON_FAILURE (5 retries). Every push to main redeploys.
+User wants to be checked with before deploys; routine flag-file pushes are the
+normal workflow, but confirm anything beyond that.
 
 ## Decisions already made (don't re-litigate)
 
